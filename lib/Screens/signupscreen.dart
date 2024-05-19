@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:vil_cone/Components/logintextfield.dart';
-import 'package:vil_cone/Screens/signupscreen.dart';
 
 import '../Components/loginsignupbutton.dart';
 import '../Components/squaretile.dart';
+import 'loginscreen.dart';
 
-class LoginScreen extends StatelessWidget {
-  void Function()? ontap =() => SignupScreen();
-  LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
   //Controller
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   //OntapSignIn
 
   void SignInUser() {}
- 
+  void GotoLogin() {
+    LoginScreen();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,15 @@ class LoginScreen extends StatelessWidget {
               //UserName
               MyTextField(
                 controller: usernameController,
-                hintText: "UserName",
+                hintText: "Email",
+                obscureText: false,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              MyTextField(
+                controller: usernameController,
+                hintText: "Password",
                 obscureText: false,
               ),
               SizedBox(
@@ -53,7 +62,7 @@ class LoginScreen extends StatelessWidget {
               //Password
               MyTextField(
                 controller: passwordController,
-                hintText: "Password",
+                hintText: "Confirm Password",
                 obscureText: true,
               ),
               SizedBox(
@@ -121,18 +130,21 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Not a Member ?"),
+                  Text("Already a Member ?"),
                   SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
-                    onTap: ontap,
+                    onTap: () => GotoLogin,
                     child: Text(
-                      "Register Now",
+                      "Login Now",
                       style: TextStyle(color: Colors.blue),
                     ),
                   )
                 ],
+              ),
+              SizedBox(
+                height: 20,
               )
             ],
           ),

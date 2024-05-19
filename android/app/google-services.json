@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469343748655",
+    "project_id": "ecomapp-17c26",
+    "storage_bucket": "ecomapp-17c26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469343748655:android:1d011d9061063dcd85fcda",
+        "android_client_info": {
+          "package_name": "com.example.vil_cone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6y6XWj50JzvPo7-OUfgqNBTRdz3fiju0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
