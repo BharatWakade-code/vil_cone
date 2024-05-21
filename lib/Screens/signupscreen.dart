@@ -31,13 +31,13 @@ class SignupScreen extends StatelessWidget {
               ),
               //Logo
               Icon(
-                Icons.lock,
+                Icons.android,
                 size: 100,
               ),
               SizedBox(
                 height: 50,
               ),
-              Text("Welcome Back  You've Been Missed !"),
+              Text("Welcome , You Can Register Here !"),
               SizedBox(
                 height: 50,
               ),
@@ -135,7 +135,12 @@ class SignupScreen extends StatelessWidget {
                     width: 5,
                   ),
                   GestureDetector(
-                    onTap: () => GotoLogin,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
+                    },
                     child: Text(
                       "Login Now",
                       style: TextStyle(color: Colors.blue),
