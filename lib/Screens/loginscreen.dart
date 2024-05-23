@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:vil_cone/Components/loginSignUpbtn.dart';
 import 'package:vil_cone/Components/logintextfield.dart';
-import 'package:vil_cone/Screens/signupscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-import '../Components/loginsignupbutton.dart';
 import '../Components/squaretile.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  void Function()? ontap;
+  LoginScreen({super.key, required this.ontap});
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -21,50 +20,50 @@ class _LoginScreenState extends State<LoginScreen> {
   // Sign In Method
   void signInUser() async {
     try {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Success'),
-          content: Text('You have successfully signed in!'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        ),
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Error'),
-          content: Text(e.toString()),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        ),
-      );
+
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      ShowErrorMsg(e.code);
     }
+  }
+  //ShowErrorMsg
+
+  void ShowErrorMsg(String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[300],
+            title: Center(
+              child: Text(
+                message,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SingleChildScrollView(
-        child: Center(
+      backgroundColor: const Color.fromRGBO(224, 224, 224, 1),
+      body: Center(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -97,28 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 10),
               // Sign In Button
-              GestureDetector(
-                onTap: signInUser,
-                child: Padding(
-                  padding: const EdgeInsets.all(25.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(25.0),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+              LoginOrSignBtn(
+                ontap: signInUser,
+                text: "Sign In",
               ),
               SizedBox(height: 10),
               // Divider
@@ -161,12 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text("Not a Member?"),
                   SizedBox(width: 5),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
-                      );
-                    },
+                    onTap: widget.ontap,
                     child: Text(
                       "Register Now",
                       style: TextStyle(color: Colors.blue),

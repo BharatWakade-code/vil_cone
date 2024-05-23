@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SignBtn extends StatelessWidget {
-  final Function()? ontap;
+class LoginOrSignBtn extends StatelessWidget {
+  void Function()? ontap;
+  final String text;
+  LoginOrSignBtn({super.key, required this.ontap , required this.text});
 
-  SignBtn({super.key, required this.ontap});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => ontap,
+      onTap: ontap,
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Container(
@@ -18,11 +19,12 @@ class SignBtn extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              "Sign In",
+              text,
               style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                fontSize: 15,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
