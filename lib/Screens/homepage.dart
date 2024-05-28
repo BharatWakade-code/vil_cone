@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:vil_cone/Screens/Tabs/AccountTab/accountTab.dart';
+import 'package:vil_cone/Screens/Tabs/HomeTab/homeScreen.dart';
+import 'package:vil_cone/Screens/Tabs/ShopTab/shopScreen.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -17,25 +20,44 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Padding(padding: EdgeInsets.all(50.0)),
-          IconButton(
-            alignment: Alignment.centerRight,
-            onPressed: SignOut,
-            icon: Icon(Icons.logout),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            backgroundColor: Colors.grey,
+            centerTitle: true,
+            titleTextStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            toolbarHeight: 70,
+            title: Text("Ekart"),
           ),
-          SizedBox(
-            height: 50,
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              color: Colors.grey,
+            ),
+            child: TabBar(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              indicatorColor: Colors.transparent,
+              tabs: [
+                Icon(Icons.home),
+                Icon(Icons.location_city),
+                Icon(Icons.person_2),
+              ],
+            ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          body: TabBarView(
             children: [
-              Text("Welcome to EcomApp  ${user?.email} "),
+              HomeScreen(),
+              ShopScreen(),
+              AccountTab(),
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vil_cone/Components/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:vil_cone/Screens/homepage.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const AuthPage(),
+      // home: HomePage(),
     );
   }
 }
