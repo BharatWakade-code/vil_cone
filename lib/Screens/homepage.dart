@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vil_cone/Screens/Tabs/AccountTab/accountTab.dart';
 import 'package:vil_cone/Screens/Tabs/HomeTab/homeScreen.dart';
 import 'package:vil_cone/Screens/Tabs/ShopTab/shopScreen.dart';
+import 'package:vil_cone/models/constants.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -20,6 +21,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Constants constants = Constants();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
@@ -27,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.grey,
+            backgroundColor: constants.secondaryColor,
             centerTitle: true,
             titleTextStyle: TextStyle(
               fontSize: 20,
@@ -37,8 +40,9 @@ class _HomePageState extends State<HomePage> {
             title: Text("Ekart"),
           ),
           bottomNavigationBar: Container(
+            height: 60,
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: constants.secondaryColor,
             ),
             child: TabBar(
               padding: EdgeInsets.symmetric(vertical: 5),

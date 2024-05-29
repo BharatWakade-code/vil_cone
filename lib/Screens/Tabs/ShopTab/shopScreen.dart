@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:vil_cone/Screens/Tabs/HomeTab/homeScreen.dart';
+import 'package:vil_cone/Screens/homepage.dart';
 import 'package:vil_cone/models/city.dart';
 import 'package:vil_cone/models/constants.dart';
 
@@ -26,7 +28,7 @@ class _ShopScreenState extends State<ShopScreen> {
             return Container(
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(10),
-              height: size.height * .8,
+              height: size.height * 0.1,
               width: size.width,
               decoration: BoxDecoration(
                 border: cities[index].isSelected == true
@@ -78,7 +80,8 @@ class _ShopScreenState extends State<ShopScreen> {
           backgroundColor: constants.secondaryColor,
           child: Icon(Icons.pin_drop),
           onPressed: () {
-            print(selectedCities.length);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
           }),
     );
   }
