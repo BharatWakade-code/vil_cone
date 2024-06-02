@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:vil_cone/Components/loginSignUpbtn.dart';
 import 'package:vil_cone/Components/logintextfield.dart';
 import '../Components/squaretile.dart';
-import 'loginscreen.dart';
 
 class SignupScreen extends StatefulWidget {
   void Function()? ontap;

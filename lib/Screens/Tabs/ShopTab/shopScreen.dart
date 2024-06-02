@@ -76,13 +76,6 @@ class _ShopScreenState extends State<ShopScreen> {
               ),
             );
           }),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: constants.secondaryColor,
-          child: Icon(Icons.pin_drop),
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
-          }),
     );
   }
 }
