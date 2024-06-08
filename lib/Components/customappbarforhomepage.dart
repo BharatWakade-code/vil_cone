@@ -18,7 +18,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             backgroundColor: Colors.grey.shade300,
           ),
           onPressed: () {},
-          icon: Icon(Icons.grade_outlined),
+          icon: Icon(Icons.grid_3x3_outlined),
         ),
         IconButton(
           style: IconButton.styleFrom(

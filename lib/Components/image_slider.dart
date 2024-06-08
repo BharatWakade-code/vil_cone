@@ -23,7 +23,7 @@ class _ImageSliderState extends State<ImageSlider> {
               physics: ClampingScrollPhysics(),
               children: [
                 Image.asset(
-                  "assets/images/nike1.png",
+                  "assets/images/slider.jpg",
                   fit: BoxFit.cover,
                 ),
                 Image.asset(
