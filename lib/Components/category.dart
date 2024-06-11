@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vil_cone/models/category.dart';
+import 'package:vil_cone/models/products.dart';
 
 class CategoryList extends StatefulWidget {
   const CategoryList({super.key});
@@ -15,7 +16,7 @@ class _CategoryListState extends State<CategoryList> {
       height: 130,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
+        itemCount: products.length,
         itemBuilder: (context, index) {
           return Column(
             children: [
@@ -25,7 +26,7 @@ class _CategoryListState extends State<CategoryList> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage(categories[index].image),
+                        image: AssetImage(products[index].image),
                         fit: BoxFit.cover)),
               ),
               SizedBox(
@@ -35,7 +36,7 @@ class _CategoryListState extends State<CategoryList> {
                 child: Column(
                   children: [
                     Text(
-                      categories[index].title,
+                      products[index].title,
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
                     )

@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               CategoryList(),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     "Special For You",
@@ -50,12 +50,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ],
               ),
+              SizedBox(
+                height: 15,
+              ),
               //For Shopping Items
               GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+                      childAspectRatio: 0.78,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
                   itemCount: products.length,
                   itemBuilder: (context, Index) {
                     return ProductCard(
